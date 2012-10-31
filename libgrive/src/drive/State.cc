@@ -112,7 +112,7 @@ void State::FromRemote( const Entry& e )
 	else if ( e.Kind() != "folder" && (fn.empty() || e.ContentSrc().empty()) )
 		Log( "%1% \"%2%\" is a google document, ignored", e.Kind(), e.Name(), log::verbose ) ;
 	
-	else if ( fn.find('/') != fn.npos )
+	else if ( fn.find('/') != fn.npos || e.Name().find('/') != e.Name().npos )
 		Log( "%1% \"%2%\" contains a slash in its name, ignored", e.Kind(), e.Name(), log::verbose ) ;
 	
 	else if ( !e.IsChange() && e.ParentHrefs().size() != 1 )
